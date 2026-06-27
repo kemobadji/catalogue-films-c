@@ -222,7 +222,7 @@ void trier_par_note(Film *films, int nbFilms) {
 void trier_alphabetique(Film *films, int nbFilms) {
     for (int i = 0; i < nbFilms - 1; i++) {
         for (int j = 0; j < nbFilms - i - 1; j++) {
-            if (strcasecmp(films[i].titre, films[j + 1].titre) > 0) {
+            if (strcasecmp(films[j].titre, films[j + 1].titre) > 0) {
                 Film temp = films[j];
                 films[j] = films[j + 1];
                 films[j + 1] = temp;
