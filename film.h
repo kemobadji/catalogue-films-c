@@ -1,3 +1,5 @@
+
+=======
 /* ============================================================
    film.h — Déclarations de la structure Film et des fonctions
    Projet Final – Programmation C & Gestion Mémoire – L1 LDIA
@@ -39,3 +41,4 @@ void top5(Film *films, int nbFilms);
 void statistiques(Film *films, int nbFilms);
 
 #endif
+
