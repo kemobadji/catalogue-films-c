@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 =======
 /* ============================================================
    film.h — Déclarations de la structure Film et des fonctions
@@ -41,4 +41,4 @@ void top5(Film *films, int nbFilms);
 void statistiques(Film *films, int nbFilms);
 
 #endif
->>>>>>> 9b2cdf9f788ef87618f8f3e054c23f7eea01c539
+

@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 =======
 /* ============================================================
  *  main.c — Point d'entrée et menu principal
@@ -155,4 +155,3 @@ int main(void)
     free(films);
     return EXIT_SUCCESS;
 }
->>>>>>> 9b2cdf9f788ef87618f8f3e054c23f7eea01c539
