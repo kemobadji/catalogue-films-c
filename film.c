@@ -6,7 +6,7 @@
 
 /* ── GESTION DES FILMS ── */
 
-Film* chargerFilms(const char *nomFichier, int *nbFilms) {
+Film* charger_films(const char *nomFichier, int *nbFilms) {
     FILE *f = fopen(nomFichier, "r");
     *nbFilms = 0;
 
@@ -44,7 +44,7 @@ Film* chargerFilms(const char *nomFichier, int *nbFilms) {
     return films;
 }
 
-void sauvegarderFilms(const char *nomFichier, Film *films, int nbFilms) {
+void sauvegarder_films(const char *nomFichier, Film *films, int nbFilms) {
     FILE *f = fopen(nomFichier, "w");
     if (f == NULL) {
         printf("Erreur : impossible d'ouvrir le fichier.\n");
@@ -65,7 +65,7 @@ void sauvegarderFilms(const char *nomFichier, Film *films, int nbFilms) {
 
 /* ── MODIFICATIONS ── */
 
-void ajouterFilm(Film **films, int *nbFilms, Film nouveauFilm) {
+void ajouter_films(Film **films, int *nbFilms, Film nouveauFilm) {
     Film *nouveauTableau = realloc(*films, (*nbFilms + 1) * sizeof(Film));
     if (nouveauTableau == NULL) {
         printf("Erreur : impossible d'allouer de la mémoire.\n");
@@ -76,7 +76,7 @@ void ajouterFilm(Film **films, int *nbFilms, Film nouveauFilm) {
     *films = nouveauTableau;
 }
 
-void modifierFilm(Film *films, int nbFilms, int id, Film filmModifie) {
+void modifier_films(Film *films, int nbFilms, int id, Film filmModifie) {
     for (int i = 0; i < nbFilms; i++) {
         if (films[i].id == id) {
             films[i] = filmModifie;
@@ -86,7 +86,7 @@ void modifierFilm(Film *films, int nbFilms, int id, Film filmModifie) {
     printf("Film avec l'ID %d non trouvé.\n", id);
 }
 
-void supprimerFilm(Film **films, int *nbFilms, int id) {
+void supprimer_films(Film **films, int *nbFilms, int id) {
     int index = -1;
     for (int i = 0; i < *nbFilms; i++) {
         if ((*films)[i].id == id) {
@@ -116,7 +116,7 @@ void supprimerFilm(Film **films, int *nbFilms, int id) {
 
 /* ── CONSULTATION ── */
 
-void affichertouslesfilms(Film *films, int nbFilms) {
+void afficher_tous(Film *films, int nbFilms) {
     if (nbFilms == 0) {
         printf("Aucun film à afficher.\n");
         return;
@@ -134,7 +134,7 @@ void affichertouslesfilms(Film *films, int nbFilms) {
     printf("\n");
 }
 
-void rechercheparID(Film *films, int nbFilms, int id) {
+void rechercher_par_id(Film *films, int nbFilms, int id) {
     for (int i = 0; i < nbFilms; i++) {
         if (films[i].id == id) {
             printf("%-4d %-30s %-20s %-6d %-5.1f\n",
@@ -149,7 +149,7 @@ void rechercheparID(Film *films, int nbFilms, int id) {
     printf("Film avec l'ID %d non trouvé.\n", id);
 }
 
-void rechercheparTitre(Film *films, int nbFilms, const char *titre) {
+void rechercher_par_titre(Film *films, int nbFilms, const char *titre) {
     int trouve = 0;
     char titreLow[100], rechercheLow[100];
     int k;
@@ -177,7 +177,7 @@ void rechercheparTitre(Film *films, int nbFilms, const char *titre) {
         printf("Aucun film avec le titre '%s' trouvé.\n", titre);
 }
 
-void afficherFilmsParGenre(Film *films, int nbFilms, const char *genre) {
+void afficher_par_genre(Film *films, int nbFilms, const char *genre) {
     int trouve = 0;
     char genreLow[50], filmGenreLow[50];
     int k;
@@ -207,7 +207,7 @@ void afficherFilmsParGenre(Film *films, int nbFilms, const char *genre) {
 
 /* ── BONUS ── */
 
-void trierparNote(Film *films, int nbFilms) {
+void trier_par_note(Film *films, int nbFilms) {
     for (int i = 0; i < nbFilms - 1; i++) {
         for (int j = 0; j < nbFilms - i - 1; j++) {
             if (films[j].note < films[j + 1].note) {
@@ -219,7 +219,7 @@ void trierparNote(Film *films, int nbFilms) {
     }
 }
 
-void trierAlphabetique(Film *films, int nbFilms) {
+void trier_alphabetique(Film *films, int nbFilms) {
     for (int i = 0; i < nbFilms - 1; i++) {
         for (int j = 0; j < nbFilms - i - 1; j++) {
             if (strcasecmp(films[i].titre, films[j + 1].titre) > 0) {
@@ -231,18 +231,18 @@ void trierAlphabetique(Film *films, int nbFilms) {
     }
 }
 
-void affichertop5(Film *films, int nbFilms) {
+void top5(Film *films, int nbFilms) {
     if (nbFilms == 0) {
         printf("Aucun film à afficher.\n");
         return;
     }
-    trierparNote(films, nbFilms);
+    trier_par_note(films, nbFilms);
     int n = nbFilms < 5 ? nbFilms : 5;
     printf("=== Top %d films ===\n", n);
-    affichertouslesfilms(films, n);
+    afficher_tous(films, n);
 }
 
-void afficherstatistiques(Film *films, int nbFilms) {
+void statistiques(Film *films, int nbFilms) {
     if (nbFilms == 0) {
         printf("Aucun film pour calculer les statistiques.\n");
         return;
