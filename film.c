@@ -1,5 +1,4 @@
 
-=======
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -265,4 +264,3 @@ void statistiques(Film *films, int nbFilms) {
     printf("Meilleur film         : %s (%.1f)\n", films[iMax].titre, max);
     printf("Film moins noté       : %s (%.1f)\n", films[iMin].titre, min);
 }
->>>>>>> 9b2cdf9f788ef87618f8f3e054c23f7eea01c539

@@ -1,5 +1,4 @@
 
-=======
 /* ============================================================
  *  main.c — Point d'entrée et menu principal
  *  Projet Final – Programmation C & Gestion Mémoire – L1 LDIA
