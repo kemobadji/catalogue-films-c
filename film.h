@@ -1,5 +1,5 @@
 
-=======
+
 /* ============================================================
    film.h — Déclarations de la structure Film et des fonctions
    Projet Final – Programmation C & Gestion Mémoire – L1 LDIA
