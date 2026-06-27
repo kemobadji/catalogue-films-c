@@ -34,7 +34,7 @@ void sauvegarder_films(const char *fichier, Film *films, int nb_films);
 /* ── Fonctionnalités obligatoires ── */
 
 /* 4.1 — Demande  infos à l'utilisateur et ajout dans le CSV. */
-void ajouter_film(const char *fichier);
+void ajouter_films(const char *fichier);
 
 /* 4.2 — Affichage tous les films du catalogue. */
 void afficher_tous(const char *fichier);
@@ -49,10 +49,10 @@ void rechercher_par_titre(const char *fichier);
 void afficher_par_genre(const char *fichier);
 
 /* 4.6 — Modification des champs d'un film sélectionné par ID. */
-void modifier_film(const char *fichier);
+void modifier_films(const char *fichier);
 
 /** 4.7 — Suppression d'un film sélectionné par ID. */
-void supprimer_film(const char *fichier);
+void supprimer_films(const char *fichier);
 
 /* ── Fonctionnalités bonus ── */
 
@@ -77,5 +77,5 @@ void to_lower(const char *src, char *dest, int n);
 void afficher_separateur(void);
 
 /* Affichage d'un film de façon lisible. */
-void afficher_film(const Film *f);
+void afficher_films(const Film *f);
 
