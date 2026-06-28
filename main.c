@@ -64,11 +64,11 @@ int main(void)
                 nouveau.titre[strcspn(nouveau.titre, "\n")] = '\0';
                 printf("Genre  : "); fgets(nouveau.genre, MAX_GENRE, stdin);
                 nouveau.genre[strcspn(nouveau.genre, "\n")] = '\0';
-                printf("Année  : "); scanf("%d", &nouveau.annee); getchar();
+                printf("Annee  : "); scanf("%d", &nouveau.annee); getchar();
                 printf("Note   : "); scanf("%f", &nouveau.note);  getchar();
                 ajouter_films(&films, &nbFilms, nouveau);
                 sauvegarder_films(FICHIER_CSV, films, nbFilms);
-                printf("Film ajouté avec l'ID %d.\n", nouveau.id);
+                printf("Film ajoute avec l'ID %d.\n", nouveau.id);
                 break;
             }
 
@@ -78,7 +78,7 @@ int main(void)
 
             case 3: {
                 int id;
-                printf("ID recherché : "); scanf("%d", &id); getchar();
+                printf("ID recherche : "); scanf("%d", &id); getchar();
                 rechercher_par_id(films, nbFilms, id);
                 break;
             }
@@ -130,6 +130,7 @@ int main(void)
                 afficher_tous(films, nbFilms);
                 break;
 
+            
             case 9:
                 trier_alphabetique(films, nbFilms);
                 afficher_tous(films, nbFilms);

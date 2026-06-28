@@ -267,5 +267,5 @@ void statistiques(Film *films, int nbFilms) {
     printf("Nombre total de films : %d\n", nbFilms);
     printf("Note moyenne          : %.2f\n", sommeNotes / nbFilms);
     printf("Meilleur film         : %s (%.1f)\n", films[iMax].titre, max);
-    printf("Film moins noté       : %s (%.1f)\n", films[iMin].titre, min);
+    printf("Film moins note       : %s (%.1f)\n", films[iMin].titre, min);
 }
