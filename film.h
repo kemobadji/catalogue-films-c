@@ -5,14 +5,14 @@
    Projet Final – Programmation C & Gestion Mémoire – L1 LDIA
  ============================================================ */
 
-#ifndef FILM_H
+#ifndef FILM_H // ifndef permet d'éviter les inclusions multiples du fichier
 #define FILM_H
 
 #define MAX_TITRE  100
 #define MAX_GENRE   50
 #define FICHIER_CSV "catalogue.csv"
 
-/* ── Structure principale ── */
+// Structure principale
 typedef struct {
     int   id;
     char  titre[MAX_TITRE];
@@ -21,11 +21,11 @@ typedef struct {
     float note;
 } Film;
 
-/* ── Gestion du fichier CSV ── */
+// Gestion du fichier CSV 
 Film *charger_films(const char *nomFichier, int *nbFilms);
 void  sauvegarder_films(const char *nomFichier, Film *films, int nbFilms);
 
-/* ── Fonctionnalités obligatoires ── */
+// Fonctionnalités obligatoires 
 void ajouter_films(Film **films, int *nbFilms, Film nouveauFilm);
 void afficher_tous(Film *films, int nbFilms);
 void rechercher_par_id(Film *films, int nbFilms, int id);
@@ -34,11 +34,11 @@ void afficher_par_genre(Film *films, int nbFilms, const char *genre);
 void modifier_films(Film *films, int nbFilms, int id, Film filmModifie);
 void supprimer_films(Film **films, int *nbFilms, int id);
 
-/* ── Fonctionnalités bonus ── */
+// Fonctionnalités bonus 
 void trier_par_note(Film *films, int nbFilms);
 void trier_alphabetique(Film *films, int nbFilms);
 void top5(Film *films, int nbFilms);
 void statistiques(Film *films, int nbFilms);
 
-#endif
+#endif  // endif permet d'éviter les inclusions multiples du fichier
 

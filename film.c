@@ -1,11 +1,16 @@
+/* ============================================================
+   film.c — Implémentation des fonctions de gestion des films
+   Projet Final – Programmation C & Gestion Mémoire – L1 LDIA
+ ============================================================ */
 
+// Inclusions des bibliothèques standard
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-#include "film.h"
+#include "film.h" // Inclusion de notre fichier film.h pour accéder à la structure Film et aux déclarations de fonctions
 
-/* ── GESTION DES FILMS ── */
+// GESTION DES FILMS 
 
 Film* charger_films(const char *nomFichier, int *nbFilms) {
     FILE *f = fopen(nomFichier, "r");
@@ -13,7 +18,7 @@ Film* charger_films(const char *nomFichier, int *nbFilms) {
 
     if (f == NULL) {
         f = fopen(nomFichier, "w");
-        if (f) fclose(f);
+        if (f) fclose(f); 
         return NULL;
     }
 
@@ -22,17 +27,17 @@ Film* charger_films(const char *nomFichier, int *nbFilms) {
         (*nbFilms)++;
     }
 
-    Film *films = malloc((*nbFilms) * sizeof(Film));
+    Film *films = malloc((*nbFilms) * sizeof(Film)); // malloc pour allouer de la mémoire pour les films
     if (films == NULL) {
         fclose(f);
         return NULL;
     }
 
-    rewind(f);
+    rewind(f); // Retour au début du fichier pour relire les films
     int i = 0;
-    while (fgets(ligne, sizeof(ligne), f)) {
+    while (fgets(ligne, sizeof(ligne), f)) { // fgets pour lire chaque ligne du fichier CSV
         ligne[strcspn(ligne, "\n")] = '\0';
-        sscanf(ligne, "%d;%99[^;];%49[^;];%d;%f",
+        sscanf(ligne, "%d;%99[^;];%49[^;];%d;%f", // sscanf pour lire les films depuis le fichier CSV
                &films[i].id,
                films[i].titre,
                films[i].genre,
@@ -41,7 +46,7 @@ Film* charger_films(const char *nomFichier, int *nbFilms) {
         i++;
     }
 
-    fclose(f);
+    fclose(f); // fclose pour fermer le fichier après lecture
     return films;
 }
 
@@ -53,7 +58,7 @@ void sauvegarder_films(const char *nomFichier, Film *films, int nbFilms) {
     }
 
     for (int i = 0; i < nbFilms; i++) {
-        fprintf(f, "%d;%s;%s;%d;%.1f\n",
+        fprintf(f, "%d;%s;%s;%d;%.1f\n", // fprintf pour écrire les films dans le fichier CSV
                 films[i].id,
                 films[i].titre,
                 films[i].genre,
@@ -64,10 +69,10 @@ void sauvegarder_films(const char *nomFichier, Film *films, int nbFilms) {
     fclose(f);
 }
 
-/* ── MODIFICATIONS ── */
+// MODIFICATIONS 
 
 void ajouter_films(Film **films, int *nbFilms, Film nouveauFilm) {
-    Film *nouveauTableau = realloc(*films, (*nbFilms + 1) * sizeof(Film));
+    Film *nouveauTableau = realloc(*films, (*nbFilms + 1) * sizeof(Film)); // realloc pour redimensionner le tableau de films
     if (nouveauTableau == NULL) {
         printf("Erreur : impossible d'allouer de la mémoire.\n");
         return;
@@ -115,7 +120,7 @@ void supprimer_films(Film **films, int *nbFilms, int id) {
     *films = nouveauTableau;
 }
 
-/* ── CONSULTATION ── */
+// CONSULTATION 
 
 void afficher_tous(Film *films, int nbFilms) {
     if (nbFilms == 0) {
@@ -206,7 +211,7 @@ void afficher_par_genre(Film *films, int nbFilms, const char *genre) {
         printf("Aucun film avec le genre '%s' trouvé.\n", genre);
 }
 
-/* ── BONUS ── */
+// BONUS 
 
 void trier_par_note(Film *films, int nbFilms) {
     for (int i = 0; i < nbFilms - 1; i++) {

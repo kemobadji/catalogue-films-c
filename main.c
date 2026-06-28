@@ -1,16 +1,18 @@
 
 /* ============================================================
- *  main.c — Point d'entrée et menu principal
- *  Projet Final – Programmation C & Gestion Mémoire – L1 LDIA
- * ============================================================ */
+   main.c — Point d'entrée et menu principal
+   Projet Final – Programmation C & Gestion Mémoire – L1 LDIA
+  ============================================================ */
 
+// Inclusions des bibliothèques standard
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "film.h"
 
-/* Affichage du menu principal et retour du choix de l'utilisateur */
-static int afficher_menu(void)
+// Affichage du menu principal et retour du choix de l'utilisateur 
+
+static int afficher_menu(void) //static pour limiter la portée de la fonction à ce fichier
 {
     int choix;
     printf("\n+======================================+\n");
@@ -151,6 +153,6 @@ int main(void)
 
     } while (choix != 0);
 
-    free(films);
-    return EXIT_SUCCESS;
+    free(films);     // Libération de la mémoire allouée
+    return EXIT_SUCCESS; // Fin du programme
 }
